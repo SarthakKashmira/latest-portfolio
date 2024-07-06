@@ -4,7 +4,9 @@ import {Container,Row,Col} from 'react-bootstrap';
 import ContactImg from '../img/contact-img.svg';
 import axios from 'axios';
 import './contact.css';
+
 function Contact(){
+
     const formInitial={
         firstName:'',
         lastName:'',
@@ -12,30 +14,36 @@ function Contact(){
         phone:'',
         message:'',
     }
+
     const[formDetails,setformdetails]=useState(formInitial);
+
     const[buttonText,setbuttonText]=useState('Send');
-    const [status,setstatus] =useState({});
+
+    const [status,setstatus] =useState({success:false,message:"Enter your Email"});
+
     const onFormUpdate=(category,value)=>{
         setformdetails({
             ...formDetails,
             [category]:value
         })
-      console.log(formDetails);}
+      console.log(formDetails);
+    }
 
         const handleSubmit= async (e)=>{
             e.preventDefault();
             setbuttonText('Sending...');
+            console.log(formDetails);
               try{
-                  const response = await axios.post("http://localhost:8000/connect_with_me",{
-                    formDetails
-                  })
-                  if(response){
-                    console.log(response)
+                  const url=process.env.REACT_APP_CONNECTION || "http://localhost:5000/connect_with_me" ;
+                  const response = await axios.post(url,{ formDetails })
+                  console.log(response.status)
+                  if(response.status===200){
+                    console.log(response);
+                    setstatus({success:true,message:"Details saved successfully!"})
                   }
               }
               catch(e){
                 console.log(e);
-
               }
               setbuttonText('Send');
         };
@@ -64,14 +72,13 @@ function Contact(){
                       </Col> 
                       <Col>
                       <textarea row='6' value={formDetails.message} placeholder='Message' onChange={(e)=>onFormUpdate('message',e.target.value)}></textarea>
-                      <button type='submit' ><span>{buttonText}</span></button>
-                      </Col> 
-                       {
+                      <button type='submit' onClick={handleSubmit}><span>{buttonText}</span></button>
+                      {
                         status.message &&
-                        <Col>
                         <p className={status.success===false?'danger':'success'}>{status.message}</p>
-                        </Col>
                        }
+                      </Col> 
+                      
                     </Row>
                  </form>
 

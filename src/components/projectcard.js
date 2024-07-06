@@ -1,16 +1,19 @@
 import { Col } from "react-bootstrap";
 import React from 'react';
 import './projects.css';
- const ProjectCard = ({ title, description, imgUrl }) => {
+ const ProjectCard = ({ title, description, imgUrl,link }) => {
   return (
-    <Col size={12} sm={6} md={4}>
+    <Col className="projectsCard">
       <div className="proj-imgbx">
-        <img src={imgUrl } alt=''/>
+        <img src={imgUrl } alt='logo'className="box-card"/>
         <div className="proj-txtx">
           <h4>{title}</h4>
           <span>{description}</span>
         </div>
       </div>
+      <a href={link} target="_blank" rel="noopener noreferrer" className="linki"> 
+      <button className="buttonStyle">Code</button>
+      </a>
     </Col>
   )
 }

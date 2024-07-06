@@ -19,6 +19,5 @@ const newSchema=new mongoose.Schema({
     message:{
         type:String
     }
-})
-const UserModel=mongoose.model("UserModel",newSchema)
-module.exports=UserModel
+});
+module.exports=mongoose.model("persondetails",newSchema)

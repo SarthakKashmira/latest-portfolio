@@ -81,6 +81,14 @@ function Skills (){
                                     <img src={python} alt='Img'/>
                                     <h5>Python</h5>
                                 </div>
+                                <div className='item'>
+                                    <img src="https://seeklogo.com/images/M/mongodb-logo-D13D67C930-seeklogo.com.png" alt='Img'/>
+                                    <h5>MongoDB</h5>
+                                </div>
+                                <div className='item'>
+                                    <img src="https://leanbi.ch/wp-content/uploads/2017/05/tf_logo-1-1024x655.png" alt='Img' className="imageSkill"/>
+                                    <h5>Tensorflow</h5>
+                                </div>
                             </Carousel>
                         </div>
                         </Col>

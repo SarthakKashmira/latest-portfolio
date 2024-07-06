@@ -19,6 +19,7 @@ function Footer ()  {
               <a href="https://www.linkedin.com/in/sarthak-kashmira-522bb3220" target='blank'><img src={navIcon1} alt="Icon" /></a>
               <a href="https://github.com/SarthakKashmira" target='blank'><img src={navIcon2} alt="Icon" /></a>
               <a href="https://www.codechef.com/users/sarthak_90" target='blank'><img src={navIcon3} alt="Icon" /></a>
+              <a href="https://leetcode.com/u/sarthakkashmira/" target='blank'><img src="https://leetcode.com/static/images/LeetCode_logo.png" alt="Icon" /></a>
             </div>
             <p>Copyright 2023. All Rights Reserved</p>
           </Col>

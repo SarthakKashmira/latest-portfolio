@@ -1,40 +1,52 @@
-const Express=require("express");
-const cors=require("cors");
-const mongoose = require("mongoose");
-
+const express=require("express");
+const nodemailer=require('nodemailer');
+const router = express.Router()
 const UserModel=require("./mongo");
-const app=Express();
-app.use(Express.json());
-app.use(Express.urlencoded({extended:true}))
-app.use(cors());
-const PORT=8000;
-mongoose.connect("mongodb+srv://sarthakkashmira123:D$k7FfXRk2KAuzh@cluster0.r3fswnx.mongodb.net/test?retryWrites=true&w=majority",{ useNewUrlParser: true, useUnifiedTopology: true })
-.then(()=>{
-    console.log("connected");
-})
-.catch((error)=>{
-    console.log(error);
- 
-    console.log('failed');
-})
 
-app.post("/connect_with_me",async(req,res)=>{ 
+const transporter = nodemailer.createTransport({
+    host: "smtp.gmail.com",
+    port: process.env.emailPORT || 587,
+    secure: false, // Use `true` for port 465, `false` for all other ports
+    auth: {
+      user: "sarthakkashmira123@gmail.com",
+      pass: "yzxy mtoc gcya vdgn",
+    },
+  });
+
+
+
+router.post("/connect_with_me",async(req,res)=>{ 
    try {
-    const received =req.body
+    const received =req.body;
+    console.log(received);
+    if(received.formDetails.email.length===0){
+        console.log("Error of no email")
+        res.status(400).send("Enter your email first")
+    }
 
-    console.log(received)
     const data = new UserModel(req.body.formDetails);
-   const response = await data.save()
-   
+    const response = await data.save()
+    console.log(response)
+    if(response.email){
+        try{
+            const info = await transporter.sendMail({
+                from: '"Sarthak Kashmira 👻" <rockerz99883311@gmail.com>', // sender address
+                to: response.email, // list of receivers
+                subject: "Confirmation of connect.", // Subject line
+                text: "Than you for connecting.Lets build a better community ahead.", // plain text body
+                html: "<b>Than you for connecting.Lets build a better community ahead. It is a no-reply email</b>", // html body
+              });
+            
+              console.log("Message sent: %s", info.messageId);
+        }
+        catch(err){
+            console.log(err);
+        }
+    }
     res.send(response)
-
-   
-
-    
    } catch (error) {
-    res.send(error)
-    
+    res.send(error);
    }
-
 })
-app.listen(PORT);
+module.exports=router;
+

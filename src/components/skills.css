@@ -8,6 +8,7 @@
     text-align: center;
     padding: 60px 50px;
     margin-top: -10px;
+    position: relative;
   }
   .skill h2 {
       font-size: 45px;
@@ -35,4 +36,23 @@
     bottom: 0;
     width: 40%;
     z-index: -4;
+  }
+  .item{
+    color: #ffffff;
+    width:100%;
+    margin-bottom: 5%;
+  }
+  @media (max-width: 768px) {
+    .item{
+      color: #ffffff;
+      flex-direction: row;
+      justify-content: center;
+      width:100%;
+      height:30vh;
+      margin-bottom: 5%;
+    }
+  }
+  .imageSkill{
+    padding-bottom:10px;
+    margin-bottom: 10%;
   }

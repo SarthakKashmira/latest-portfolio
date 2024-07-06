@@ -1,6 +1,6 @@
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
+import {Container} from 'react-bootstrap';
+import {Nav} from 'react-bootstrap';
+import {Navbar} from 'react-bootstrap';
 import React from 'react';
 import {useState,useEffect} from 'react';
 import logo from '../img/IMG_20230210_155638.jpg';
@@ -19,12 +19,16 @@ function Navigation() {
  const onUpdateActiveLink=(value)=>{
   setactiveLink(value);
 }
+const [click,setclicked]=useState(true);
+const handleClick=()=>{
+  setclicked(!click);
+}
     return (
          <Navbar expand="lg" className={scrolled?"scrolled":""}>
       <Container>
         <Navbar.Brand href="#home"><img className='mera 'src={logo} alt='LOGO'/></Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav"> 
-        <span className='navbar-toggler-icon'></span>
+        <span className={click?"navbar-toggler-icon":"navbar-toggler-icon"} onClick={handleClick}></span>
         </Navbar.Toggle>
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
