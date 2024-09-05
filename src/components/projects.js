@@ -20,7 +20,7 @@ function Projects()
  },
  {title:'Youtube-Clone',
   description:'YouTube clone with video uploading, streaming, and user interaction features.',
-  imgUrl:"https://uvereann.github.io/youtube-clone/img/logo.png",
+  imgUrl:"https://tse3.mm.bing.net/th?id=OIP.RiHClZVUkF-GYdKaZIEcxAHaEG&pid=Api&P=0&h=180",
   link:"https://github.com/SarthakKashmira/",
   website:"https://singular-brigadeiros-08dddc.netlify.app/"
   },  

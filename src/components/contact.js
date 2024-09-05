@@ -39,11 +39,11 @@ function Contact(){
                   console.log(response.status)
                   if(response.status===200){
                     console.log(response);
-                    setstatus({success:true,message:"Details saved successfully!"})
+                    setstatus({success:(response.data.result?true:false),message:response.data.message})
                   }
               }
-              catch(e){
-                console.log(e);
+              catch(err){
+                console.log(err);
               }
               setbuttonText('Send');
         };
