@@ -29,7 +29,7 @@ function Projects()
  const projects1=[
   {title:'Weather-App',
    description:'Predicts weather of any place entered by the user.',
-   imgUrl:"https://logodix.com/logo/1255156.png",
+   imgUrl:"https://tse3.mm.bing.net/th?id=OIP.oL1kXphJT9ufvSEwEMwxjAHaHa&pid=Api&P=0&h=180",
    link:"https://github.com/SarthakKashmira/Weather-App",
    website:"https://stellular-fairy-401582.netlify.app/"
 },

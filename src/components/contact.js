@@ -34,8 +34,8 @@ function Contact(){
             setbuttonText('Sending...');
             console.log(formDetails);
               try{
-                  const url=process.env.REACT_APP_CONNECTION || "http://localhost:5000/connect_with_me" ;
-                  const response = await axios.post(url,{ formDetails })
+                  const url="https://latestportfolio-backend.onrender.com" ;
+                  const response = await axios.post(url, formDetails )
                   console.log(response.status)
                   if(response.status===200){
                     console.log(response);
